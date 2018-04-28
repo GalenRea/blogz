@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+<!--
+    Blog entry form
+    Requires: 
+        new_entry_title (may be empty)
+        new_entry_body (may be empty)
+  -->
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+   <ul class=flashes> 
+       {% for message in messages %}
+       <li>{{ message }} </li>
+       {% endfor %}
+   </ul>
+   {% endif %}
+   {% endwith %}
+<h1>What's on your mind today?</h1>
+<form action="/new_entry" method="post">
+
+        <label for="title_field">What's your title?</label>
+        <input id="title_field" name="title" type="text" value="{{ new_entry_title }}">
+
+        <label for="body_field">Tell me more:</label>
+        <textarea rows="4" cols="50" id="body_field" name="body" >{{ new_entry_body }}</textarea>
+
+    <input id="submit_button" type="submit" value="Save">
+</form>
+{% endblock %}

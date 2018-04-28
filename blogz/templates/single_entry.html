@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+<!--
+    Blog entry form
+    Requires: 
+        new_entry_title (may be empty)
+        new_entry_body (may be empty)
+  -->
+  
+
+{% block content %}
+<h3>{{ entry.title }}</h3>
+<p>{{ entry.body }}</p>
+<p>faithfully blogged by <a href='/blog?userid={{ user.id }}'>{{ user.email }}</a></p>
+{% endblock %}
